@@ -35,22 +35,25 @@ public class GridGenerator : MonoBehaviour
 
     public void Rebuild()
     {
-        //If there are any boxes, will be deleted
-        if(spawnedBoxes != null && spawnedBoxes.Length != 0)
-        {
-            for(int i=0; i < spawnedBoxes.Length; i++)
-            {
-                Destroy(spawnedBoxes[i].gameObject);
-            }
-        }
-
-        //Refreshing match counter
-        matchCount = 0;
-        counterTxt.text = "Match Count: " + matchCount;
-
-        //Spawn Boxes
         int n = int.Parse(inputField.text);
-        SpawnBox(n);
+        if (n > 1)
+        {
+            //If there are any boxes, will be deleted
+            if (spawnedBoxes != null && spawnedBoxes.Length != 0)
+            {
+                for (int i = 0; i < spawnedBoxes.Length; i++)
+                {
+                    Destroy(spawnedBoxes[i].gameObject);
+                }
+            }
+
+            //Refreshing match counter
+            matchCount = 0;
+            counterTxt.text = "Match Count: " + matchCount;
+
+            //Spawn Boxes
+            SpawnBox(n);
+        }
     }
 
     private void SpawnBox(int n)
